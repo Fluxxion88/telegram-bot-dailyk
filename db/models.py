@@ -1,17 +1,12 @@
-from sqlalchemy import Column, BigInteger, Text, Integer, DateTime, ForeignKey
+from sqlalchemy import Column, BigInteger, Text, Integer, DateTime, ForeignKey, func
 from sqlalchemy.orm import declarative_base
-import logging
-from telegram import Update
-from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler
-import os
-import dotenv
 
 Base = declarative_base()
 class User(Base):
     __tablename__ = "users"
     telegram_id = Column(BigInteger, primary_key=True)
     name = Column(Text)
-    created_at = Column(DateTime)
+    created_at = Column(DateTime, server_default=func.now())
 
 class Habit(Base):
     __tablename__ = "habits"
@@ -24,5 +19,5 @@ class Habit(Base):
 class Completion(Base):
     __tablename__ = "completions"
     id = Column(BigInteger, primary_key=True)
-    habit_id = Column(BigInteger, ForeignKey("habits.id"))
-    completed_at = Column(DateTime)
+    habit_id = Column(BigInteger, ForeignKey("habits.id", ondelete="CASCADE"))
+    completed_at = Column(DateTime, server_default=func.now())
