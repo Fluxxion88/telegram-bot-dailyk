@@ -10,7 +10,7 @@ class User(Base):
 
 class Habit(Base):
     __tablename__ = "habits"
-    id = Column(BigInteger, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     telegram_id = Column(BigInteger, ForeignKey("users.telegram_id"))
     name = Column(Text)
     description = Column(Text)
@@ -18,6 +18,6 @@ class Habit(Base):
 
 class Completion(Base):
     __tablename__ = "completions"
-    id = Column(BigInteger, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     habit_id = Column(BigInteger, ForeignKey("habits.id", ondelete="CASCADE"))
     completed_at = Column(DateTime, server_default=func.now())
