@@ -1,12 +1,10 @@
 from db.connection import SessionLocal
 from db.models import User, Habit, Completion
 
-def add_user(telegram_id, name):
-    session = SessionLocal()
+def add_user(session, telegram_id, name):
     new_user = User(telegram_id=telegram_id, name=name)
     session.add(new_user)
     session.commit()
-    session.close()
 
 def add_habit(telegram_id, name, description=None, times_a_day=1):
     session = SessionLocal()
