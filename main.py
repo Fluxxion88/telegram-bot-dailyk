@@ -4,6 +4,8 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler
 import os
 import dotenv
+from db.models import Base
+from db.connection import engine
 
 dotenv.load_dotenv()
 TOKEN = os.getenv("TELEGRAM_BOT")
@@ -14,6 +16,8 @@ logging.basicConfig(
 )
 
 if __name__ == '__main__':
+    Base.metadata.create_all(engine)
+
     application = ApplicationBuilder().token(TOKEN).build()
     
     start_handler = CommandHandler('start', start)
