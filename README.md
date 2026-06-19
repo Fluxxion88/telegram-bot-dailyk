@@ -32,21 +32,19 @@ The repository layer uses dependency injection — functions take a `session` as
 
 ## Database Schema
 
-🔲 [сверь с `db/models.py`, поправь колонки/типы:]
-
 - **users** — `telegram_id` (PK) `name` `created_at`
 - **habits** — `id` (PK), `telegram_id` (FK → users), `name` `description` `times_a_day`
-- **completions** — `id` (PK), `habit_id` (FK → habits), `[completion date]`
+- **completions** — `id` (PK), `habit_id` (FK → habits), `completed_at`
 
 ## Commands
 
 - `/start` — Сreates your account and its ID
 - `/help` — Show list of all commands
-- `/add <name>` — adds a new habit
-- `/list` — shows a list of all your habits
-- `/delete <id>` — deletes a habit
-- `/done <id>` — marks a habit as completed
-- `/streak <id>` — shows the streak
+- `/add <name>` — Adds a new habit
+- `/list` — Shows a list of all your habits
+- `/delete <id>` — Deletes a habit
+- `/done <id>` — Marks a habit as completed
+- `/streak <id>` — Shows the streak
 
 ## Running Locally
 
