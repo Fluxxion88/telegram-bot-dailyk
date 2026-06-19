@@ -3,7 +3,7 @@ A Telegram bot for tracking daily habits — add a habit, mark it done, and watc
 
 ## Demo
 
-![Demo](Screenshot_commands.png)
+<img src="Screenshot_commands.png" alt="Demo" width="400">
 
 ## Tech Stack
 
